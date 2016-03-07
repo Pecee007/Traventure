@@ -1,2 +1,2 @@
 # Traventure
-Personalized Hotel Seraching
+Personalized Hotel Searching.
