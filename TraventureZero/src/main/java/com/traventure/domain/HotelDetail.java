@@ -3,24 +3,22 @@ package com.traventure.domain;
 
 public class HotelDetail {
 
-	 private long _id;
+	 private String _id;
 	 private String hotel_name;  
 	 private String hotel_description;
 	 
 	 public HotelDetail(){}
 	 
 	
-	 public HotelDetail(long _id, String hotel_name, String hotel_description) {
-		super();
-		this._id = _id;
+	 public HotelDetail(String hotel_name, String hotel_description) {
 		this.hotel_name = hotel_name;
 		this.hotel_description = hotel_description;
 	}
 	 
-	public long get_id() {
+	public String get_id() {
 		return _id;
 	}
-	public void set_id(long _id) {
+	public void set_id(String _id) {
 		this._id = _id;
 	}
 	public String getHotel_name() {
