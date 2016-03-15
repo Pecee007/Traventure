@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,7 +24,7 @@
 
 <!-- navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
-  		<div class="container-fluid" style="background-image: url('img3.jpg');">
+  		<div class="container-fluid" style="background-image: url('resources/img/img3.jpg');">
   			<div class="navbar-header">
   				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
   					<span class="icon-bar"></span>
@@ -74,11 +75,25 @@
   </div><!--End Container-->
   
 <!-- Displaying hotel details -->
-  
-
+<%-- <h2>Hotel Details List</h2><br/>
+<a href="search">CLICK HERE</a>
+<table border>
+	<tr>
+		<th>ID</th>
+		<th>Hotel Name</th>
+		<th>Hotel Description</th>
+	</tr>
+	<c:forEach var="hotel" items="${hotels}">
+		<tr>
+			<td>${hotel.id}</td>
+			<td>${hotel.hotel_name}</td>
+			<td>${hotel.hotel_description}</td>
+		</tr>
+	</c:forEach>
+	</table>
 <button onClick="loadHotelDetails()">Search</button>
 <table id = "hotelDetails" >
-</table>
+</table> --%>
 
   <!-- Search Feature -->
   <div class="page-header" id="search">
@@ -110,7 +125,106 @@
       </tr>
 
 
-      <tr>
+<!-- Dynamic rows generarion -->
+
+
+<c:forEach var="hotel" items="${hotels}">
+		<tr>
+		        <td>
+		          <div class="container">
+		            <div class="row">
+		              <div class="col-xs-12 col-md-4">
+		                <center>
+		                  <div class="carousel slide" id="screenshot-carouse${hotel.id}" data-ride="carousel">
+		                    <ol class="carousel-indicators">
+		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="0" class="active"></li>
+		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="1"></li>
+		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="2"></li>
+		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="3"></li>
+		                    </ol>
+		                    <div class="carousel-inner">
+		                      <div class="item active">
+		                        <img src="resources/img/luxury.png" alt="Text of the image">
+		                        <div class="carousel-caption">
+		                          <h3>Luxury Stay</h3>
+		                          <p>Experience your Dream</p>
+		                        </div>
+		                      </div>
+		                      <div class="item">
+		                        <img src="resources/img/river.png" alt="Text of the image">
+		                        <div class="carousel-caption">
+		                          <h3>River Side Holiday</h3>
+		                          <p>Natures blessing</p>
+		                        </div>
+		                      </div>
+		                      <div class="item">
+		                        <img src="resources/img/fun.jpg" alt="Text of the image">
+		                        <div class="carousel-caption">
+		                          <h3>Have some Fun!!</h3>
+		                          <p>Start Off HERE...</p>
+		                        </div>
+		                      </div>
+		                      <div class="item">
+		                        <img src="resources/img/eco.jpg" alt="Text of the image">
+		                        <div class="carousel-caption">
+		                          <h3>IN LOVE with ECO-WORLD?</h3>
+		                          <p>Nothing better than this..#</p>
+		                        </div>
+		                      </div>
+		          
+		                    </div><!-- End Carousel inner -->
+		                    
+		                    <a href="#screenshot-carouse${hotel.id}" class="left carousel-control" data-slide="prev">
+		                      <span class="glyphicon glyphicon-chevron-left"></span>
+		                    </a>
+		                    <a href="#screenshot-carouse${hotel.id}" class="right carousel-control" data-slide="next">
+		                      <span class="glyphicon glyphicon-chevron-right"></span>
+		                    </a>
+		                  </div><!-- End Carousel -->
+		                </center>
+		              </div>
+		              <div class="col-xs-12 col-md-8">
+		                <div class="col-xs-12 col-md-10">
+		                  <div class="row-md-2"> Name of the hotel:<b> ${hotel.hotel_name} </b>
+		                  </div>
+		                  <div class="row-md-4"> Location details: <b>${hotel.hotel_location}</b></div>
+		                  <div class="row-md-2">
+		                     <div class="panel-group" id="description${hotel.id}" role="tablist" aria-multiselectable="true">
+		                       <div class="panel panel-default">
+		                         <div class="panel-heading" role="tab" id="desc${hotel.id}">
+		                           <h4 class="panel-title">
+		                             <a data-toggle="collapse" data-present="#description${hotel.id}" href="#info${hotel.id}" aria-expanded="true" aria-controls="info1                    ">More details / Description</a>
+		                           </h4>
+		                         </div>
+		                         <div id="info${hotel.id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="desc${hotel.id}">
+		                           <div class="panel-body">
+		                           ${hotel.hotel_description}
+		                           </div>
+		                         </div>
+		                       </div>
+		                     </div>
+		                  </div>
+		                </div>
+		                <div class="col-xs-12 col-md-2">
+		                  <center>
+		                    <a class="btn btn-primary btn-lg" href="#" role="button">LIKE</a>
+		                  </center>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		        </td>
+		      </tr>
+
+</c:forEach>
+
+
+
+
+
+
+<!-- 1st Row -->
+<%--       <tr>
         <td>
           <div class="container">
             <div class="row">
@@ -125,28 +239,28 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="item active">
-                        <img src="luxury.png" alt="Text of the image">
+                        <img src="resources/img/luxury.png" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>Luxury Stay</h3>
                           <p>Experience your Dream</p>
                         </div>
                       </div>
                       <div class="item">
-                        <img src="river.png" alt="Text of the image">
+                        <img src="resources/img/river.png" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>River Side Holiday</h3>
                           <p>Natures blessing</p>
                         </div>
                       </div>
                       <div class="item">
-                        <img src="fun.jpg" alt="Text of the image">
+                        <img src="resources/img/fun.jpg" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>Have some Fun!!</h3>
                           <p>Start Off HERE...</p>
                         </div>
                       </div>
                       <div class="item">
-                        <img src="eco.jpg" alt="Text of the image">
+                        <img src="resources/img/eco.jpg" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>IN LOVE with ECO-WORLD?</h3>
                           <p>Nothing better than this..#</p>
@@ -198,11 +312,12 @@
             </div>
           </div>
         </td>
-      </tr>
+      </tr> 
+--%>
 
+<!-- 2st Row -->
 
-
-      <tr>
+<%--       <tr>
         <td>
           <div class="container">
             <div class="row">
@@ -217,28 +332,28 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="item active">
-                        <img src="luxury.png" alt="Text of the image">
+                        <img src="resources/img/luxury.png" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>Luxury Stay</h3>
                           <p>Experience your Dream</p>
                         </div>
                       </div>
                       <div class="item">
-                        <img src="river.png" alt="Text of the image">
+                        <img src="resources/img/river.png" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>River Side Holiday</h3>
                           <p>Natures blessing</p>
                         </div>
                       </div>
                       <div class="item">
-                        <img src="fun.jpg" alt="Text of the image">
+                        <img src="resources/img/fun.jpg" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>Have some Fun!!</h3>
                           <p>Start Off HERE...</p>
                         </div>
                       </div>
                       <div class="item">
-                        <img src="eco.jpg" alt="Text of the image">
+                        <img src="resources/img/eco.jpg" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>IN LOVE with ECO-WORLD?</h3>
                           <p>Nothing better than this..#</p>
@@ -288,9 +403,11 @@
             </div>
           </div>
         </td>
-      </tr>
+      </tr> --%>
+      
+<!-- 3st Row -->
 
-      <tr>
+<%--       <tr>
         <td>
           <div class="container">
             <div class="row">
@@ -305,28 +422,28 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="item active">
-                        <img src="luxury.png" alt="Text of the image">
+                        <img src="resources/img/luxury.png" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>Luxury Stay</h3>
                           <p>Experience your Dream</p>
                         </div>
                       </div>
                       <div class="item">
-                        <img src="river.png" alt="Text of the image">
+                        <img src="resources/img/river.png" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>River Side Holiday</h3>
                           <p>Natures blessing</p>
                         </div>
                       </div>
                       <div class="item">
-                        <img src="fun.jpg" alt="Text of the image">
+                        <img src="resources/img/fun.jpg" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>Have some Fun!!</h3>
                           <p>Start Off HERE...</p>
                         </div>
                       </div>
                       <div class="item">
-                        <img src="eco.jpg" alt="Text of the image">
+                        <img src="resources/img/eco.jpg" alt="Text of the image">
                         <div class="carousel-caption">
                           <h3>IN LOVE with ECO-WORLD?</h3>
                           <p>Nothing better than this..#</p>
@@ -375,10 +492,10 @@
             </div>
           </div>
         </td>
-      </tr>
+      </tr>--%>
 
     </tbody>
-  </table>
+  </table> 
   
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
