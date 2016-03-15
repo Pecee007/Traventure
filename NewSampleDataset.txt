@@ -1,0 +1,37 @@
+//Not reqired to be inserted, the application automatically inserts these documents if no documents are found in the database
+
+/* 1 */
+{
+    "_id" : ObjectId("56e18060b2b32ce34581cec8"),
+    "_class" : "com.traventure.domain.HotelDetail",
+    "hotel_name" : "Vivanta By TAJ",
+    "hotel_description" : "The brand Vivanta was born as a part of Taj Hotels Resorts and Palaces' (also known as The Indian Hotels Company Limited) brand architecture exercise. With this the brand rolled over 19 of its hotels to the new brand.",
+    "hotel_location" : "Bangalore"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("56e18060b2b32ce34581cec9"),
+    "_class" : "com.traventure.domain.HotelDetail",
+    "hotel_name" : "The Pride Hotel",
+    "hotel_description" : "There's a Mediterranean restaurant/bar, plus a trendy eatery with live music and a sleek cafe with buffet and a la carte dining options. Other amenities include a spa and a business centre.",
+    "hotel_location" : "Mumbai"
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("56e18060b2b32ce34581ceca"),
+    "_class" : "com.traventure.domain.HotelDetail",
+    "hotel_name" : "Lemon Tree Hotel",
+    "hotel_description" : "There’s a casual multi-cuisine cafe, and a pan-Asian restaurant serves street food. Other amenities include a trendy bar with a PlayStation and a pool table, a fitness room, a spa, and an outdoor pool. Free breakfast and parking are provided.",
+    "hotel_location" : "Bangalore"
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("56e18060b2b32ce34581cecb"),
+    "_class" : "com.traventure.domain.HotelDetail",
+    "hotel_name" : "The Woodbridge Hotel",
+    "hotel_description" : "There’s a casual multi-cuisine cafe, and a pan-Asian restaurant serves street food. Other amenities include a trendy bar with a PlayStation and a pool table, a fitness room, a spa, and an outdoor pool. Free breakfast and parking are provided.",
+    "hotel_location" : "Delhi"
+}

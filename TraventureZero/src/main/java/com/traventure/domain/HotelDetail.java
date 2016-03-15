@@ -1,27 +1,30 @@
 package com.traventure.domain;
 
+import org.springframework.data.annotation.Id;
 
 public class HotelDetail {
 
-	 private long _id;
+	@Id
+	 private String id;
 	 private String hotel_name;  
 	 private String hotel_description;
+	 private String hotel_location;
 	 
-	 public HotelDetail(){}
+	public HotelDetail(){}
 	 
 	
-	 public HotelDetail(long _id, String hotel_name, String hotel_description) {
-		super();
-		this._id = _id;
+	 public HotelDetail(String hotel_name, String hotel_description, String hotel_location) {
+		//super();
 		this.hotel_name = hotel_name;
 		this.hotel_description = hotel_description;
+		this.hotel_location = hotel_location;
 	}
 	 
-	public long get_id() {
-		return _id;
+	public String getid() {
+		return id;
 	}
-	public void set_id(long _id) {
-		this._id = _id;
+	public void setid(String id) {
+		this.id = id;
 	}
 	public String getHotel_name() {
 		return hotel_name;
@@ -35,9 +38,19 @@ public class HotelDetail {
 	public void setHotel_description(String hotel_description) {
 		this.hotel_description = hotel_description;
 	}
+	
+	 public String getHotel_location() {
+		return hotel_location;
+	}
+
+
+	public void setHotel_location(String hotel_location) {
+		this.hotel_location = hotel_location;
+	}
+	
 	@Override
 	public String toString() {
-		return "HotelDetails [_id=" + _id + ", hotel_name=" + hotel_name + ", hotel_description=" + hotel_description + "]";
+		return "HotelDetails [id=" + id + ", hotel_name=" + hotel_name + ", hotel_description=" + hotel_description + ", hotel_location=" + hotel_location + "]";
 	}
 
 	

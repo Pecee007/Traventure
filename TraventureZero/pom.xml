@@ -15,25 +15,15 @@
 	</properties>
 	
 		<!-- MongoDB Repository -->
-	<repositories>
+	<!-- <repositories>
 		<repository>
 		   <id>spring-milestone</id>
 		   <name>Spring Maven MILESTONE Repository</name>
 		   <url>http://repo.springsource.org/libs-milestone</url>
 		</repository>
-	</repositories>
+	</repositories> -->
 		
 	<dependencies>
-	
-		<!-- MongoDB connection -->
-
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-mongodb</artifactId>
-			<version>1.2.0.RELEASE</version>
-		</dependency>
-	
-	
 	
 		<!-- Spring -->
 		<dependency>
@@ -129,6 +119,22 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+	
+		<!-- mongodb java driver -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		
+		<!-- Spring data mongodb -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>1.2.0.RELEASE</version>
+		</dependency>
+	
+	
 	
 		<!-- Test -->
 		<dependency>

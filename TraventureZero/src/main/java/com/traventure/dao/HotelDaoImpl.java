@@ -16,7 +16,7 @@ public class HotelDaoImpl implements HotelDao{
 		
 		try {
 			MongoOperations mongoOps = new MongoTemplate(new SimpleMongoDbFactory(new Mongo(), "hotel"));
-			mongoOps.findAll();
+			List<HotelDetail> hoteList = mongoOps.findAll(HotelDetail.class);
 			
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
