@@ -16,7 +16,7 @@ import com.traventure.domain.HotelDetail;
 import com.traventure.mongoRepository.HotelDetailRepo;
 
 @Controller
-public class SampleController {
+public class HotelController {
 	
 	@Autowired
 	HotelDetailRepo hotelrepo;
