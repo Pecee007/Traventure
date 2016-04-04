@@ -12,6 +12,12 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<!-- jQuery -->
+	<script src="resources/js/jquery-2.2.2.min.js"></script>
+	<script src="resources/js/hoteldetails.js"></script>
+		<!-- add json2html; both the core library and the jquery wrapper -->
+	<script type="text/javascript" src="resources/js/json2html.js"></script>
+	<script type="text/javascript" src="resources/js/jquery.json2html.js"></script>
 </head>
 <body>
 <style>
@@ -20,10 +26,11 @@
 	}
 </style>
 
-	<body data-spy="scroll" data-target="#my-navbar">
+
+<body data-spy="scroll" data-target="#my-navbar">
 
 <!-- navbar -->
-<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+	<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
   		<div class="container-fluid" style="background-image: url('resources/img/img3.jpg');">
   			<div class="navbar-header">
   				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
@@ -48,7 +55,7 @@
 <!-- jumbotron-->
 
   	<div class="jumbotron">
-  		<div class="container text-center" style="height:200px; background-image: url('img2.jpg'); ">
+  		<div class="container text-center" style="height:200px; background-image: url('resources/img/img2.jpg'); ">
   			<h1>TRAVENTURE</h1>
   			<p>Stay Anywhere</p>
   			<div class="btn-group">
@@ -95,14 +102,117 @@
 <table id = "hotelDetails" >
 </table> --%>
 
+
+<!-- jQuery Function to retrieve JSON object -->
+
+
+<script>
+function callthis(count){
+	alert("You clicked this");
+	console.log(count+" in called function")
+	$(document).ready(function(){
+	    $("p").click(function(){
+	        $(this).hide();
+	        alert("Hello World");
+	        console.log ( 'in function function' + count);
+	    });
+	});
+}
+var count = 0;
+$(document).ready(function(){
+
+    var butn = $( "#sbutton" );
+    $(butn).click(function(){
+       // $(this).hide();
+        console.log ( 'Hotel search was clicked' );
+        callthis(count++);
+    });
+});
+
+</script>
+
+
+<br><br>
+<h1>hELLO wORLD</h1>
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+<button type="button" class="btn btn-info"  id="sbutton" >Search Hotels</button>
+<br><br>
+
+
+<!--  
+<script>
+ $(document).ready(function(){
+	 	$("#searchButton").click(function() {
+		    $("#test").toggle();
+		    console.log('hello'+'HotelsList here');
+
+	});
+});
+	 
+	
+    
+
+
+/* $("#searchButton").click(function() {
+   // var f = $($("form")[0]);
+    //var hotels = $
+    $("#test").hide();
+    console.log('hello'+'HotelsList here');
+    //console.log('findByName: ' + searchKey);
+/*     f.submit(function () {
+        var loginData = f.serialize();
+        $.post(f.attr("action"), loginData, function (result, status) {
+            if (!result.Success) {
+                $("#message").text(result.Message);
+
+                $("#username").focus();
+                $("#username").select();
+            }
+            else {
+                window.location.replace(result.ReturnUrl);
+            }
+
+        }, "json");
+        return false;
+    }); 
+});
+
+*/
+/* $.ajax({ 
+    url:urlName,    
+    type:"POST", 
+    contentType: "application/json; charset=utf-8",
+    data: jsonString, //Stringified Json Object
+    async: false,    //Cross-domain requests and dataType: "jsonp" requests do not support synchronous operation
+    cache: false,    //This will force requested pages not to be cached by the browser          
+    processData:false, //To avoid making query String instead of JSON
+    success: function(resposeJsonObject){
+        // Success Message Handler
+    }
+}); 
+
+</script>
+
+-->
+
+
+
+
+
   <!-- Search Feature -->
   <div class="page-header" id="search">
   </div>
-
+	<button type="button" class="btn btn-info"  id="searchbutton" >Search Hotels</button>
+	<br/>
+	<br/>
+	<p id="test" >Hello i'm test paragraph</p>
+		<br/>
+	<br/>
+	<!-- onClick="search()" -->
   <table class="table table-striped">
     <tbody>
-
-
       <tr>
         <td>
           <center>
@@ -123,13 +233,147 @@
           </center>
         </td>
       </tr>
-
+      
+      <!-- Getting the list of hotels sample test -->
+			<h1>Get Hotels using Ajax ........</h1>
+	        <table>
+	                <tr><td colspan="2"><div id="error" class="error"></div></td></tr>
+	                <tr><td>Enter your name : </td><td> <input type="text" id="pname"><br/></td></tr>
+	                <tr><td>Education : </td><td> <input type="text" id="uname"><br/></td></tr>
+	                <tr><td colspan="2"><input type="button" class="btn btn-info" value="Search for HOTELS" onclick="doAjaxPost()"><br/></td></tr>
+	                <tr><td colspan="2"><div id="info" class="success"></div></td></tr>
+	        </table>
 
 <!-- Dynamic rows generarion -->
 
 
-<c:forEach var="hotel" items="${hotels}">
-		<tr>
+
+		<c:forEach var="hotel" items="${hotels}">
+			<tr>
+		        <td>
+		          <div class="container">
+		            <div class="row">
+		              <div class="col-xs-12 col-md-4">
+		                <center>
+		                  <div class="carousel slide" id="screenshot-carouse${hotel.id}" data-ride="carousel">
+		                    <ol class="carousel-indicators">
+		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="0" class="active"></li>
+		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="1"></li>
+		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="2"></li>
+		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="3"></li>
+		                    </ol>
+		                    <div class="carousel-inner">
+		                      <div class="item active">
+		                        <img src="resources/img/luxury.png" alt="Text of the image">
+		                        <div class="carousel-caption">
+		                          <h3>Luxury Stay</h3>
+		                          <p>Experience your Dream</p>
+		                        </div>
+		                      </div>
+		                      <div class="item">
+		                        <img src="resources/img/river.png" alt="Text of the image">
+		                        <div class="carousel-caption">
+		                          <h3>River Side Holiday</h3>
+		                          <p>Natures blessing</p>
+		                        </div>
+		                      </div>
+		                      <div class="item">
+		                        <img src="resources/img/fun.jpg" alt="Text of the image">
+		                        <div class="carousel-caption">
+		                          <h3>Have some Fun!!</h3>
+		                          <p>Start Off HERE...</p>
+		                        </div>
+		                      </div>
+		                      <div class="item">
+		                        <img src="resources/img/eco.jpg" alt="Text of the image">
+		                        <div class="carousel-caption">
+		                          <h3>IN LOVE with ECO-WORLD?</h3>
+		                          <p>Nothing better than this..#</p>
+		                        </div>
+		                      </div>
+		          
+		                    </div><!-- End Carousel inner -->
+		                    
+		                    <a href="#screenshot-carouse${hotel.id}" class="left carousel-control" data-slide="prev">
+		                      <span class="glyphicon glyphicon-chevron-left"></span>
+		                    </a>
+		                    <a href="#screenshot-carouse${hotel.id}" class="right carousel-control" data-slide="next">
+		                      <span class="glyphicon glyphicon-chevron-right"></span>
+		                    </a>
+		                  </div><!-- End Carousel -->
+		                </center>
+		              </div>
+		              <div class="col-xs-12 col-md-8">
+		                <div class="col-xs-12 col-md-10">
+		                  <div class="row-md-2"> Name of the hotel:<b id="hotel_name"> </b>
+		                  </div>
+		                  <div class="row-md-4"> Location details: <b id="hotel_location"> </b></div>
+		                  <div class="row-md-2">
+		                     <div class="panel-group" id="description${hotel.id}" role="tablist" aria-multiselectable="true">
+		                       <div class="panel panel-default">
+		                         <div class="panel-heading" role="tab" id="desc${hotel.id}">
+		                           <h4 class="panel-title">
+		                             <a data-toggle="collapse" data-present="#description${hotel.id}" href="#info${hotel.id}" aria-expanded="true" aria-controls="info1">More details / Description</a>
+		                           </h4>
+		                         </div>
+		                         <div id="info${hotel.id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="desc${hotel.id}">
+		                           <div class="panel-body" id="hotel_description">
+		                           ${hotel.hotel_description}
+		                           </div>
+		                         </div>
+		                       </div>
+		                     </div>
+		                  </div>
+		                </div>
+		                <div class="col-xs-12 col-md-2">
+		                  <center>
+		                    <a class="btn btn-primary btn-lg" href="#" role="button">LIKE</a>
+		                  </center>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		        </td>
+		      </tr>
+		</c:forEach>
+    </tbody>
+  </table> 
+
+<table id="hotelslist"></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- 		<c:forEach var="hotel" items="${hotels}">
+			<tr>
 		        <td>
 		          <div class="container">
 		            <div class="row">
@@ -215,290 +459,17 @@
 		          </div>
 		        </td>
 		      </tr>
-
-</c:forEach>
-
-
-
-
-
-
-<!-- 1st Row -->
-<%--       <tr>
-        <td>
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12 col-md-4">
-                <center>
-                  <div class="carousel slide" id="screenshot-carousel" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li data-target="#screenshot-carousel" data-slide-to="0" class="active"></li>
-                      <li data-target="#screenshot-carousel" data-slide-to="1"></li>
-                      <li data-target="#screenshot-carousel" data-slide-to="2"></li>
-                      <li data-target="#screenshot-carousel" data-slide-to="3"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                      <div class="item active">
-                        <img src="resources/img/luxury.png" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>Luxury Stay</h3>
-                          <p>Experience your Dream</p>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <img src="resources/img/river.png" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>River Side Holiday</h3>
-                          <p>Natures blessing</p>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <img src="resources/img/fun.jpg" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>Have some Fun!!</h3>
-                          <p>Start Off HERE...</p>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <img src="resources/img/eco.jpg" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>IN LOVE with ECO-WORLD?</h3>
-                          <p>Nothing better than this..#</p>
-                        </div>
-                      </div>
-          
-                    </div><!-- End Carousel inner -->
-                    
-                    <a href="#screenshot-carousel" class="left carousel-control" data-slide="prev">
-                      <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a href="#screenshot-carousel" class="right carousel-control" data-slide="next">
-                      <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                  </div><!-- End Carousel -->
-                </center>
-              </div>
-              <div class="col-xs-12 col-md-8">
-                <div class="col-xs-12 col-md-10">
-                  <div class="row-md-2"> Name of the hotel:<b> Steve Bruce </b>
-                  </div>
-                  <div class="row-md-2"> Rating: <b> *****</b>
-                  </div>
-                  <div class="row-md-4"> Location details: <b>English football manager, currently for Hull City</b></div>
-                  <div class="row-md-2"> Price: <b>Rs.5000/- </b></div>
-                  <div class="row-md-2">
-                     <div class="panel-group" id="description1" role="tablist" aria-multiselectable="true">
-                       <div class="panel panel-default">
-                         <div class="panel-heading" role="tab" id="desc1">
-                           <h4 class="panel-title">
-                             <a data-toggle="collapse" data-present="#description1" href="#info1" aria-expanded="true" aria-controls="info1                    ">More details / Description</a>
-                           </h4>
-                         </div>
-                         <div id="info1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="desc1">
-                           <div class="panel-body">
-                             He began his professional career at Gillingham in 1979, and made over 200 appearances before transferring to                     Norwich City five years later. From 1987 to 1996, he played for Manchester United, winning the Premier                     League, FA Cup, Football League Cup and European Cup Winner's Cup. He was the first English player of the                    twentieth century to captain a team to the Double. 
-                           </div>
-                         </div>
-                       </div>
-                     </div>
-                  </div>
-                </div>
-                <div class="col-xs-12 col-md-2">
-                  <center>
-                    <a class="btn btn-primary btn-lg" href="#" role="button">LIKE</a>
-                  </center>
-                </div>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr> 
---%>
-
-<!-- 2st Row -->
-
-<%--       <tr>
-        <td>
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12 col-md-4">
-                <center>
-                  <div class="carousel slide" id="screenshot-carouse2" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li data-target="#screenshot-carouse2" data-slide-to="0" class="active"></li>
-                      <li data-target="#screenshot-carouse2" data-slide-to="1"></li>
-                      <li data-target="#screenshot-carouse2" data-slide-to="2"></li>
-                      <li data-target="#screenshot-carouse2" data-slide-to="3"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                      <div class="item active">
-                        <img src="resources/img/luxury.png" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>Luxury Stay</h3>
-                          <p>Experience your Dream</p>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <img src="resources/img/river.png" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>River Side Holiday</h3>
-                          <p>Natures blessing</p>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <img src="resources/img/fun.jpg" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>Have some Fun!!</h3>
-                          <p>Start Off HERE...</p>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <img src="resources/img/eco.jpg" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>IN LOVE with ECO-WORLD?</h3>
-                          <p>Nothing better than this..#</p>
-                        </div>
-                      </div>
-          
-                    </div><!-- End Carousel inner -->
-                    
-                    <a href="#screenshot-carouse2" class="left carousel-control" data-slide="prev">
-                      <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a href="#screenshot-carouse2" class="right carousel-control" data-slide="next">
-                      <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                  </div><!-- End Carousel -->
-                </center>
-              </div>
-              <div class="col-xs-12 col-md-8">
-                <div class="col-xs-12 col-md-10">
-                  <div class="row-md-2"> Name of the hotel:<b> Steve Bruce </b>
-                  </div>
-                  <div class="row-md-2"> Rating: <b> *****</b>
-                  </div>
-                  <div class="row-md-4"> Location details: <b>English football manager, currently for Hull City</b></div>
-                  <div class="row-md-2"> Price: <b>Rs.5000/- </b></div>
-                  <div class="row-md-2">
-                     <div class="panel-group" id="description2" role="tablist" aria-multiselectable="true">
-                       <div class="panel panel-default">
-                         <div class="panel-heading" role="tab" id="desc2">
-                           <h4 class="panel-title">
-                             <a data-toggle="collapse" data-present="#description2" href="#info2" aria-expanded="true" aria-controls="info2">More details / Description</a>
-                           </h4>
-                         </div>
-                         <div id="info2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="desc2">
-                           <div class="panel-body">
-                             He began his professional career at Gillingham in 1979, and made over 200 appearances before transferring to                     Norwich City five years later. From 1987 to 1996, he played for Manchester United, winning the Premier                     League, FA Cup, Football League Cup and European Cup Winner's Cup. He was the first English player of the                    twentieth century to captain a team to the Double. 
-                           </div>
-                         </div>
-                       </div>
-                     </div>
-                  </div>
-                </div>
-                <div class="col-xs-12 col-md-2">
-                  <center><a class="btn btn-primary btn-lg" href="#" role="button">LIKE</a></center>
-                </div>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr> --%>
-      
-<!-- 3st Row -->
-
-<%--       <tr>
-        <td>
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12 col-md-4">
-                <center>
-                  <div class="carousel slide" id="screenshot-carouse3" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li data-target="#screenshot-carouse3" data-slide-to="0" class="active"></li>
-                      <li data-target="#screenshot-carouse3" data-slide-to="1"></li>
-                      <li data-target="#screenshot-carouse3" data-slide-to="2"></li>
-                      <li data-target="#screenshot-carouse3" data-slide-to="3"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                      <div class="item active">
-                        <img src="resources/img/luxury.png" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>Luxury Stay</h3>
-                          <p>Experience your Dream</p>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <img src="resources/img/river.png" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>River Side Holiday</h3>
-                          <p>Natures blessing</p>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <img src="resources/img/fun.jpg" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>Have some Fun!!</h3>
-                          <p>Start Off HERE...</p>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <img src="resources/img/eco.jpg" alt="Text of the image">
-                        <div class="carousel-caption">
-                          <h3>IN LOVE with ECO-WORLD?</h3>
-                          <p>Nothing better than this..#</p>
-                        </div>
-                      </div>
-                    </div><!-- End Carousel inner -->
-                    
-                    <a href="#screenshot-carouse3" class="left carousel-control" data-slide="prev">
-                      <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a href="#screenshot-carouse3" class="right carousel-control" data-slide="next">
-                      <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                  </div><!-- End Carousel -->
-                </center>
-              </div>
-              <div class="col-xs-12 col-md-8">
-                <div class="col-xs-12 col-md-10">
-                  <div class="row-md-2"> Name of the hotel:<b> Steve Bruce </b>
-                  </div>
-                  <div class="row-md-2"> Rating: <b> *****</b>
-                  </div>
-                  <div class="row-md-4"> Location details: <b>English football manager, currently for Hull City</b></div>
-                  <div class="row-md-2"> Price: <b>Rs.5000/- </b></div>
-                  <div class="row-md-2">
-                     <div class="panel-group" id="description3" role="tablist" aria-multiselectable="true">
-                       <div class="panel panel-default">
-                         <div class="panel-heading" role="tab" id="desc3">
-                           <h4 class="panel-title">
-                             <a data-toggle="collapse" data-present="#description3" href="#info3" aria-expanded="true" aria-controls="info3">More details / Description</a>
-                           </h4>
-                         </div>
-                         <div id="info3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="desc3">
-                           <div class="panel-body">
-                             He began his professional career at Gillingham in 1979, and made over 200 appearances before transferring to                     Norwich City five years later. From 1987 to 1996, he played for Manchester United, winning the Premier                     League, FA Cup, Football League Cup and European Cup Winner's Cup. He was the first English player of the                    twentieth century to captain a team to the Double. 
-                           </div>
-                         </div>
-                       </div>
-                     </div>
-                  </div>
-                </div>
-                <div class="col-xs-12 col-md-2">
-                  <center><a class="btn btn-primary btn-lg" href="#" role="button">LIKE</a></center>
-                </div>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr>--%>
-
+		</c:forEach>
     </tbody>
-  </table> 
+  </table>  --%>
   
-	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> 
+	<script src="resources/js/jquery-2.2.2.min.js"></script> -->
+
 	<!-- Latest compiled and minified JavaScript -->
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   
 </body>

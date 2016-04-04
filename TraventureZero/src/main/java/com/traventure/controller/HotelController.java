@@ -8,11 +8,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.traventure.domain.HotelDetail;
+import com.traventure.domain.JsonResponse;
 import com.traventure.mongoRepository.HotelDetailRepo;
 
 @Controller
@@ -21,14 +26,18 @@ public class HotelController {
 	@Autowired
 	HotelDetailRepo hotelrepo;
 	
+	 Gson gson = new GsonBuilder().create();
+	
 	List<HotelDetail> hotels = new ArrayList<HotelDetail>();
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String search(@RequestParam("placename")String placename, @RequestParam("username")String username, Model model) {
+	@RequestMapping(value = "/search", method = RequestMethod.POST, produces="application/json")
+	public @ResponseBody JsonResponse search(@RequestParam("placename")String placename, 
+			@RequestParam("username")String username, Model model) {
 		System.out.println("Searching for hotels");
 		HotelDetail h;
-		
+		JsonResponse res = new JsonResponse();
+
 		//inserts sample documents into database if no documents are found
 		if(hotelrepo.count() == 0){ //count number of documents and insert sample docs if nothing found
 			
@@ -73,8 +82,19 @@ public class HotelController {
 		else{
 			hotels = (List<HotelDetail>) hotelrepo.searchByHotelLocation(location);
 		}
+		System.out.println("Object List"+hotels);
+		String a = gson.toJson(hotels);
+		System.out.println("JSON:"+a);
+
+
+            res.setStatus("SUCCESS");
+            res.setResult(hotels);
+
+	        //res.setStatus("FAIL");
 		model.addAttribute("hotels",hotels);
-		return "homepage";
+		
+		//return "homepage";
+		return res;
 	}
 	
 }
