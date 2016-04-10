@@ -86,9 +86,14 @@ public class HotelController {
 		String a = gson.toJson(hotels);
 		System.out.println("JSON:"+a);
 
-
-            res.setStatus("SUCCESS");
-            res.setResult(hotels);
+			if(!hotels.isEmpty()){
+				res.setStatus("SUCCESS");
+				res.setResult(hotels);
+			}
+			else{
+				res.setStatus("FAIL");
+			}
+            
 
 	        //res.setStatus("FAIL");
 		model.addAttribute("hotels",hotels);

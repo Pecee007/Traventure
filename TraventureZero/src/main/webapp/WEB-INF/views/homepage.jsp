@@ -6,14 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Traventure-Stay Anywhere!</title>
-	<meta name="description" content="Wiredwiki App">
+	<meta name="description" content="Traventure">
 	<!-- Latest compiled and minified CSS -->
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<!-- jQuery -->
-	<script src="resources/js/jquery-2.2.2.min.js"></script>
+	<!-- <script src="resources/js/jquery-2.2.2.min.js"></script> -->
 	<script src="resources/js/hoteldetails.js"></script>
 		<!-- add json2html; both the core library and the jquery wrapper -->
 	<script type="text/javascript" src="resources/js/json2html.js"></script>
@@ -45,7 +48,7 @@
           <a href="" class="btn btn-info navbar-btn navbar-right">LIKE TRAVENTURE!</a>
   				<ul class="nav navbar-nav">
   					<li><a href="#home">HOME</a> 
-            <li><a href="#search">SEARCH</a>
+            		<li><a href="#search">SEARCH</a>
   					<li><a href="#aboutus">ABOUT US</a> 
   					<li><a href="#faq">FAQ</a> 
   				</ul>
@@ -76,111 +79,20 @@
           <h2>Home</h2>
   			</div>
   			<div class="row">
-  						<p class="lead">Traventure is a travel metasearch engine focusing on personalized search for hotels. The site compares prices for over 730,700 hotels from more than 200 booking sites, such as Expedia, Booking.com, Hotels.com and Priceline.com. Based in Düsseldorf, Germany, the website receives about 45 million users per month on its 47 international platforms.</p>
+  						<p class="lead">Traventure is a travel metasearch engine focusing on personalized search for hotels. The site compares prices for over 730,700 hotels from more than 200 booking sites, such as Expedia, Booking.com, Hotels.com and Priceline.com. Based in Bangalore, India, the website receives about 45 million users per month on its 47 international platforms.</p>
   			</div><!-- End row -->
   		</section>
   </div><!--End Container-->
   
 <!-- Displaying hotel details -->
-<%-- <h2>Hotel Details List</h2><br/>
-<a href="search">CLICK HERE</a>
-<table border>
-	<tr>
-		<th>ID</th>
-		<th>Hotel Name</th>
-		<th>Hotel Description</th>
-	</tr>
-	<c:forEach var="hotel" items="${hotels}">
-		<tr>
-			<td>${hotel.id}</td>
-			<td>${hotel.hotel_name}</td>
-			<td>${hotel.hotel_description}</td>
-		</tr>
-	</c:forEach>
-	</table>
-<button onClick="loadHotelDetails()">Search</button>
-<table id = "hotelDetails" >
-</table> --%>
-
-
 <!-- jQuery Function to retrieve JSON object -->
 
 
-<script>
-function callthis(count){
-	alert("You clicked this");
-	console.log(count+" in called function")
-	$(document).ready(function(){
-	    $("p").click(function(){
-	        $(this).hide();
-	        alert("Hello World");
-	        console.log ( 'in function function' + count);
-	    });
-	});
-}
-var count = 0;
-$(document).ready(function(){
-
-    var butn = $( "#sbutton" );
-    $(butn).click(function(){
-       // $(this).hide();
-        console.log ( 'Hotel search was clicked' );
-        callthis(count++);
-    });
-});
-
-</script>
-
-
-<br><br>
-<h1>hELLO wORLD</h1>
-<p>If you click on me, I will disappear.</p>
-<p>Click me away!</p>
-<p>Click me too!</p>
-<button type="button" class="btn btn-info"  id="sbutton" >Search Hotels</button>
-<br><br>
 
 
 <!--  
 <script>
- $(document).ready(function(){
-	 	$("#searchButton").click(function() {
-		    $("#test").toggle();
-		    console.log('hello'+'HotelsList here');
-
-	});
-});
-	 
-	
-    
-
-
-/* $("#searchButton").click(function() {
-   // var f = $($("form")[0]);
-    //var hotels = $
-    $("#test").hide();
-    console.log('hello'+'HotelsList here');
-    //console.log('findByName: ' + searchKey);
-/*     f.submit(function () {
-        var loginData = f.serialize();
-        $.post(f.attr("action"), loginData, function (result, status) {
-            if (!result.Success) {
-                $("#message").text(result.Message);
-
-                $("#username").focus();
-                $("#username").select();
-            }
-            else {
-                window.location.replace(result.ReturnUrl);
-            }
-
-        }, "json");
-        return false;
-    }); 
-});
-
-*/
-/* $.ajax({ 
+ $.ajax({ 
     url:urlName,    
     type:"POST", 
     contentType: "application/json; charset=utf-8",
@@ -192,25 +104,15 @@ $(document).ready(function(){
         // Success Message Handler
     }
 }); 
-
 </script>
 
 -->
 
-
-
-
+<div  class="page-header" id="search">
+</div>
 
   <!-- Search Feature -->
-  <div class="page-header" id="search">
-  </div>
-	<button type="button" class="btn btn-info"  id="searchbutton" >Search Hotels</button>
-	<br/>
-	<br/>
-	<p id="test" >Hello i'm test paragraph</p>
-		<br/>
-	<br/>
-	<!-- onClick="search()" -->
+	
   <table class="table table-striped">
     <tbody>
       <tr>
@@ -218,160 +120,33 @@ $(document).ready(function(){
           <center>
           <div class="jumbotron">
             <h2>Search your hotel!</h2>
-            <form action="search" class="form-inline" method="get">
+            <div class="form-inline">
               <div class="form-group">
                 <label for="placename">Place</label>
-                <input type="text" class="form-control" id="placename" name="placename" placeholder="Hotel location">
+                <input type="text" class="form-control" id="placename" name="placename" placeholder="Hotel location" onkeypress="doAjaxPost()" onKeyDown="if(event.keyCode==13) doAjaxPost();">
               </div> &nbsp; &nbsp;
               <div class="form-group">
                 <label for="username">UserName/UserID</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your UserID">
               </div>
-              <button type="submit" class="btn btn-info">Search</button>
-            </form>
+              <button type="button" class="btn btn-info" onclick="doAjaxPost()">Search</button>
+            </div>
           </div>
           </center>
         </td>
       </tr>
-      
-      <!-- Getting the list of hotels sample test -->
-			<h1>Get Hotels using Ajax ........</h1>
-	        <table>
-	                <tr><td colspan="2"><div id="error" class="error"></div></td></tr>
-	                <tr><td>Enter your name : </td><td> <input type="text" id="pname"><br/></td></tr>
-	                <tr><td>Education : </td><td> <input type="text" id="uname"><br/></td></tr>
-	                <tr><td colspan="2"><input type="button" class="btn btn-info" value="Search for HOTELS" onclick="doAjaxPost()"><br/></td></tr>
-	                <tr><td colspan="2"><div id="info" class="success"></div></td></tr>
-	        </table>
+      <tr>
+      	<td><h4 id="info"></h4></td>
+      </tr>
+	<tr>
+		<td>
+			<table id="hoteldetails" class="table table-striped">
+				<tbody id="hotellist"></tbody>
+			</table>
+		</td>
+	</tr>      
 
 <!-- Dynamic rows generarion -->
-
-
-
-		<c:forEach var="hotel" items="${hotels}">
-			<tr>
-		        <td>
-		          <div class="container">
-		            <div class="row">
-		              <div class="col-xs-12 col-md-4">
-		                <center>
-		                  <div class="carousel slide" id="screenshot-carouse${hotel.id}" data-ride="carousel">
-		                    <ol class="carousel-indicators">
-		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="0" class="active"></li>
-		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="1"></li>
-		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="2"></li>
-		                      <li data-target="#screenshot-carouse${hotel.id}" data-slide-to="3"></li>
-		                    </ol>
-		                    <div class="carousel-inner">
-		                      <div class="item active">
-		                        <img src="resources/img/luxury.png" alt="Text of the image">
-		                        <div class="carousel-caption">
-		                          <h3>Luxury Stay</h3>
-		                          <p>Experience your Dream</p>
-		                        </div>
-		                      </div>
-		                      <div class="item">
-		                        <img src="resources/img/river.png" alt="Text of the image">
-		                        <div class="carousel-caption">
-		                          <h3>River Side Holiday</h3>
-		                          <p>Natures blessing</p>
-		                        </div>
-		                      </div>
-		                      <div class="item">
-		                        <img src="resources/img/fun.jpg" alt="Text of the image">
-		                        <div class="carousel-caption">
-		                          <h3>Have some Fun!!</h3>
-		                          <p>Start Off HERE...</p>
-		                        </div>
-		                      </div>
-		                      <div class="item">
-		                        <img src="resources/img/eco.jpg" alt="Text of the image">
-		                        <div class="carousel-caption">
-		                          <h3>IN LOVE with ECO-WORLD?</h3>
-		                          <p>Nothing better than this..#</p>
-		                        </div>
-		                      </div>
-		          
-		                    </div><!-- End Carousel inner -->
-		                    
-		                    <a href="#screenshot-carouse${hotel.id}" class="left carousel-control" data-slide="prev">
-		                      <span class="glyphicon glyphicon-chevron-left"></span>
-		                    </a>
-		                    <a href="#screenshot-carouse${hotel.id}" class="right carousel-control" data-slide="next">
-		                      <span class="glyphicon glyphicon-chevron-right"></span>
-		                    </a>
-		                  </div><!-- End Carousel -->
-		                </center>
-		              </div>
-		              <div class="col-xs-12 col-md-8">
-		                <div class="col-xs-12 col-md-10">
-		                  <div class="row-md-2"> Name of the hotel:<b id="hotel_name"> </b>
-		                  </div>
-		                  <div class="row-md-4"> Location details: <b id="hotel_location"> </b></div>
-		                  <div class="row-md-2">
-		                     <div class="panel-group" id="description${hotel.id}" role="tablist" aria-multiselectable="true">
-		                       <div class="panel panel-default">
-		                         <div class="panel-heading" role="tab" id="desc${hotel.id}">
-		                           <h4 class="panel-title">
-		                             <a data-toggle="collapse" data-present="#description${hotel.id}" href="#info${hotel.id}" aria-expanded="true" aria-controls="info1">More details / Description</a>
-		                           </h4>
-		                         </div>
-		                         <div id="info${hotel.id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="desc${hotel.id}">
-		                           <div class="panel-body" id="hotel_description">
-		                           ${hotel.hotel_description}
-		                           </div>
-		                         </div>
-		                       </div>
-		                     </div>
-		                  </div>
-		                </div>
-		                <div class="col-xs-12 col-md-2">
-		                  <center>
-		                    <a class="btn btn-primary btn-lg" href="#" role="button">LIKE</a>
-		                  </center>
-		                </div>
-		              </div>
-		            </div>
-		          </div>
-		        </td>
-		      </tr>
-		</c:forEach>
-    </tbody>
-  </table> 
-
-<table id="hotelslist"></table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <%-- 		<c:forEach var="hotel" items="${hotels}">
 			<tr>
 		        <td>
@@ -460,17 +235,11 @@ $(document).ready(function(){
 		        </td>
 		      </tr>
 		</c:forEach>
+		--%>
     </tbody>
-  </table>  --%>
-  
-<!-- 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> 
-	<script src="resources/js/jquery-2.2.2.min.js"></script> -->
-
-	<!-- Latest compiled and minified JavaScript -->
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  
+  </table>  
+  	<footer class="text-muted" align="center">
+		<p>Copyright &copy 2016 Traventure</p>
+	</footer>
 </body>
 </html>
