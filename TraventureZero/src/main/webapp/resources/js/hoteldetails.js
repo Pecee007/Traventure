@@ -1,0 +1,133 @@
+/**
+ * 
+ */
+
+
+function doAjaxPost() {
+	
+    // get the form values
+
+	//console.log("Hello world, I'm in doAjaxPost function!!");
+	//console.log("Hotel Search clicked");
+	//alert("I'm in doAjaxPost function!!");
+    var placename = $('#placename').val();
+    var username = $('#username').val();
+    
+    $.ajax({
+        type: "POST",
+        url: "search",
+        data : "placename=" + placename + "&username=" + username,
+        success: function(response){
+        	console.log(response);  
+            // we have the response
+            if(response.status == "SUCCESS"){
+            	console.log("Response Objects\n"+response.result);
+                displayHotelDetails(response.result);
+                console.log("Hotels has been added to the list successfully. ");
+             }
+            else if(response.status == "FAIL"){
+            	$('#info').html("Sorry, No Hotels Found, try another location");
+            	console.log("Sorry, No Hotels Found, try another location ");
+            }
+         },
+         error: function(e){
+             alert('Error: ' + e);
+         }
+    });
+}
+
+//Function to display the response object
+function displayHotelDetails(response){
+	
+	//set the field to empty
+    $('#hoteldetails > #hotellist ').html("");
+    //Transform all the hotel details returned by response object to html by using json2html template
+    var transformHotels =   {"tag":"tr","children":[
+                              {"tag":"td","children":[
+                                  {"tag":"div","class":"container","children":[
+                                      {"tag":"div","class":"row","children":[
+                                          {"tag":"div","class":"col-xs-12 col-md-4","children":[
+                                              {"tag":"center","children":[
+                                                  {"tag":"div","class":"carousel slide","id":"screenshot-carouse${id}","data-ride":"carousel","children":[
+                                                      {"tag":"ol","class":"carousel-indicators","children":[
+                                                          {"tag":"li","data-target":"#screenshot-carouse${id}","data-slide-to":"0","class":"active","html":""},
+                                                          {"tag":"li","data-target":"#screenshot-carouse${id}","data-slide-to":"1","html":""},
+                                                          {"tag":"li","data-target":"#screenshot-carouse${id}","data-slide-to":"2","html":""},
+                                                          {"tag":"li","data-target":"#screenshot-carouse${id}","data-slide-to":"3","html":""}
+                                                        ]},
+                                                      {"tag":"div","class":"carousel-inner","children":[
+                                                          {"tag":"div","class":"item active","children":[
+                                                              {"tag":"img","src":"resources/img/luxury.png","alt":"Text of the image","html":""},
+                                                              {"tag":"div","class":"carousel-caption","children":[
+                                                                  {"tag":"h3","html":"Luxury Stay"},
+                                                                  {"tag":"p","html":"Experience your Dream"}
+                                                                ]}
+                                                            ]},
+                                                          {"tag":"div","class":"item","children":[
+                                                              {"tag":"img","src":"resources/img/river.png","alt":"Text of the image","html":""},
+                                                              {"tag":"div","class":"carousel-caption","children":[
+                                                                  {"tag":"h3","html":"River Side Holiday"},
+                                                                  {"tag":"p","html":"Natures blessing"}
+                                                                ]}
+                                                            ]},
+                                                          {"tag":"div","class":"item","children":[
+                                                              {"tag":"img","src":"resources/img/fun.jpg","alt":"Text of the image","html":""},
+                                                              {"tag":"div","class":"carousel-caption","children":[
+                                                                  {"tag":"h3","html":"Have some Fun!!"},
+                                                                  {"tag":"p","html":"Start Off HERE..."}
+                                                                ]}
+                                                            ]},
+                                                          {"tag":"div","class":"item","children":[
+                                                              {"tag":"img","src":"resources/img/eco.jpg","alt":"Text of the image","html":""},
+                                                              {"tag":"div","class":"carousel-caption","children":[
+                                                                  {"tag":"h3","html":"IN LOVE with ECO-WORLD?"},
+                                                                  {"tag":"p","html":"Nothing better than this..#"}
+                                                                ]}
+                                                            ]}
+                                                        ]},
+                                                      {"tag":"a","href":"#screenshot-carouse${id}","class":"left carousel-control","data-slide":"prev","children":[
+                                                          {"tag":"span","class":"glyphicon glyphicon-chevron-left","html":""}
+                                                        ]},
+                                                      {"tag":"a","href":"#screenshot-carouse${id}","class":"right carousel-control","data-slide":"next","children":[
+                                                          {"tag":"span","class":"glyphicon glyphicon-chevron-right","html":""}
+                                                        ]}
+                                                    ]}
+                                                ]}
+                                            ]},
+                                          {"tag":"div","class":"col-xs-12 col-md-8","children":[
+                                              {"tag":"div","class":"col-xs-12 col-md-10","children":[
+                                                  {"tag":"div","class":"row-md-2","children":[
+                                                      {"tag":"b","html":" ${hotel_name} "}
+                                                    ]},
+                                                  {"tag":"div","class":"row-md-4","children":[
+                                                      {"tag":"b","html":"${hotel_location}"}
+                                                    ]},
+                                                  {"tag":"div","class":"row-md-2","children":[
+                                                      {"tag":"div","class":"panel-group","id":"description${id}","role":"tablist","aria-multiselectable":"true","children":[
+                                                          {"tag":"div","class":"panel panel-default","children":[
+                                                              {"tag":"div","class":"panel-heading","role":"tab","id":"desc${id}","children":[
+                                                                  {"tag":"h4","class":"panel-title","children":[
+                                                                      {"tag":"a","data-toggle":"collapse","data-present":"#description${id}","href":"#info${id}","aria-expanded":"true","aria-controls":"info${id}","html":"More details / Description"}
+                                                                    ]}
+                                                                ]},
+                                                              {"tag":"div","id":"info${id}","class":"panel-collapse collapse","role":"tabpanel","aria-labelledby":"desc${id}","children":[
+                                                                  {"tag":"div","class":"panel-body","html":"${hotel_description}"}
+                                                                ]}
+                                                            ]}
+                                                        ]}
+                                                    ]}
+                                                ]},
+                                              {"tag":"div","class":"col-xs-12 col-md-2","children":[
+                                                  {"tag":"center","children":[
+                                                      {"tag":"a","class":"btn btn-primary btn-lg","href":"#","role":"button","html":"LIKE"}
+                                                    ]}
+                                                ]}
+                                            ]}
+                                        ]}
+                                    ]}
+                                ]}
+                            ]}
+
+   		 $('#hoteldetails > #hotellist ').json2html(response, transformHotels);    
+         $('#info').html("Found a few Hotels for you!");
+}

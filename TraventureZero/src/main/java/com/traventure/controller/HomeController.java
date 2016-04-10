@@ -25,7 +25,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET, headers="Accept=application/json")
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		System.out.println("Welcome to HomePage!");
@@ -34,10 +34,11 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 		
-		
+		System.out.println(formattedDate);
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "homepage";
+
 	}
 	
 }
