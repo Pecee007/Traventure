@@ -9,22 +9,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.traventure.domain.HotelDetail;
 import com.traventure.domain.JsonResponse;
+import com.traventure.domain.User;
 import com.traventure.mongoRepository.HotelDetailRepo;
+import com.traventure.mongoRepository.UserSignUpRepo;
 
 @Controller
+//@RequestMapping(value = "/traventure")
 public class HotelController {
 	
 	@Autowired
 	HotelDetailRepo hotelrepo;
+	@Autowired
+	UserSignUpRepo userRepo;
 	
 	 Gson gson = new GsonBuilder().create();
 	
@@ -102,4 +109,28 @@ public class HotelController {
 		return res;
 	}
 	
+	@RequestMapping(value = "/signin", method = RequestMethod.GET)
+	public String signin(/*@RequestParam("username")String username, 
+			@RequestParam("password")String password, */Model model) {
+		return "jsp/signin";
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String signup(@ModelAttribute User user, Model model) {
+		return "jsp/signup";
+	}
+	
+	@RequestMapping(value = "/user/signin", method = RequestMethod.GET)
+	public String signinUser(@RequestParam("username")String username, 
+			@RequestParam("password")String password, Model model) {
+		return "jsp/signin";
+	}
+	
+	@RequestMapping(value = "/user/signup", method = RequestMethod.POST)
+	public String signupUser(@ModelAttribute User user) {
+		if(user != null){
+			userRepo.save(user);
+		}
+		return "jsp/signin";
+	}
 }

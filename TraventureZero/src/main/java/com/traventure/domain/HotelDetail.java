@@ -43,7 +43,6 @@ public class HotelDetail {
 		return hotel_location;
 	}
 
-
 	public void setHotel_location(String hotel_location) {
 		this.hotel_location = hotel_location;
 	}
