@@ -47,10 +47,10 @@
   			<div class="collapse navbar-collapse" id="navbar-collapse">
           <a href="" class="btn btn-info navbar-btn navbar-right">LIKE TRAVENTURE!</a>
   				<ul class="nav navbar-nav">
-  					<li><a href="#home">HOME</a> 
-            		<li><a href="#search">SEARCH</a>
-  					<li><a href="#aboutus">ABOUT US</a> 
-  					<li><a href="#faq">FAQ</a> 
+  					<li><a href="#home" onClick="scrollDownToHome();">HOME</a> </li>
+            		<li><a href="#search" onClick="scrollDownToSearchBox();">SEARCH</a> </li>
+  					<li><a href="#aboutus">ABOUT US</a> </li>
+  					<li><a href="#faq">FAQ</a> </li>
   				</ul>
   			</div>
   		</div>
@@ -62,9 +62,9 @@
   			<h1>TRAVENTURE</h1>
   			<p>Stay Anywhere</p>
   			<div class="btn-group">
-  				<a href="" class="btn btn-lg btn-primary">Seasons Special Stay</a>
+  				<a href="#search" class="btn btn-lg btn-primary" onClick="scrollDownToSearchBox();">Find Hotels Now!</a>
   				<a href="" class="btn btn-lg btn-default">Offers/Discounts</a>
-  				<a href="" class="btn btn-lg btn-danger">Traventure Reloaded!!</a>
+  				<a href="#home" class="btn btn-lg btn-danger" onClick="scrollDownToHome();">Traventure Reloaded!!</a>
   			</div>
   		</div><!-- End container -->
   	</div><!-- End jumbotron-->
@@ -118,7 +118,7 @@
       <tr>
         <td>
           <center>
-          <div class="jumbotron">
+          <div class="jumbotron" id="searchbody">
             <h2>Search your hotel!</h2>
             <div class="form-inline">
               <div class="form-group">
@@ -129,7 +129,7 @@
                 <label for="username">UserName/UserID</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your UserID">
               </div>
-              <button type="button" class="btn btn-info" onclick="doAjaxPost()">Search</button>
+              <button type="button" class="btn btn-info" onclick="doAjaxPost()" id="searchbutton">Search</button>
             </div>
           </div>
           </center>
@@ -238,8 +238,9 @@
 		--%>
     </tbody>
   </table>  
+  <center><a href="#search" onClick="scrollDownToSearchBox();" id="go_up">^BACK TO SEARCH^</a></center>
   	<footer class="text-muted" align="center">
-		<p>Copyright &copy 2016 Traventure</p>
+		<center><p>Copyright &copy 2016 Traventure</p></center>
 	</footer>
 </body>
 </html>

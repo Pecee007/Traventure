@@ -24,14 +24,17 @@ function doAjaxPost() {
             	console.log("Response Objects\n"+response.result);
                 displayHotelDetails(response.result);
                 console.log("Hotels has been added to the list successfully. ");
+                scrollDownToSearchBox();
              }
             else if(response.status == "FAIL"){
             	$('#info').html("Sorry, No Hotels Found, try another location");
             	console.log("Sorry, No Hotels Found, try another location ");
+            	$('#hoteldetails > #hotellist ').html("");
+            	scrollDownToSearchBox();
             }
          },
          error: function(e){
-             alert('Error: ' + e);
+             alert("Please start mongod server!!" + '\n Error: ' + e );
          }
     });
 }
@@ -131,3 +134,38 @@ function displayHotelDetails(response){
    		 $('#hoteldetails > #hotellist ').json2html(response, transformHotels);    
          $('#info').html("Found a few Hotels for you!");
 }
+
+
+function scrollDownToSearchBox(){
+		(function($) {
+		    $(document).ready(function() {
+		         $('html, body').animate({
+		           'scrollTop':$('#search').offset().top
+		         }, 500);
+		    });
+		    $("#go_up").show();
+		})(jQuery);
+}
+
+$(window).bind("mousewheel", function() {
+    $("html, body").stop(true, false);
+});
+
+function scrollDownToHome(){
+	console.log("Hello");
+	(function($) {
+	    $(document).ready(function() {
+		  $('html, body').animate({
+		    'scrollTop':$('#home').offset().top
+		     }, 500);
+		   console.log("Hello");
+		});
+	})(jQuery);
+}
+
+
+(function($) {
+    $(document).ready(function() {
+    	 $("#go_up").hide();
+    });
+})(jQuery);
