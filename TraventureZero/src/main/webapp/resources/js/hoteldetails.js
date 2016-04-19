@@ -30,6 +30,7 @@ function doAjaxPost() {
             	$('#info').html("Sorry, No Hotels Found, try another location");
             	console.log("Sorry, No Hotels Found, try another location ");
             	$('#hoteldetails > #hotellist ').html("");
+            	$("#go_up").hide();
             	scrollDownToSearchBox();
             }
          },
@@ -132,7 +133,8 @@ function displayHotelDetails(response){
                             ]}
 
    		 $('#hoteldetails > #hotellist ').json2html(response, transformHotels);    
-         $('#info').html("Found a few Hotels for you!");
+         $('#info').html("Found " + response.length + " Hotels for you!");
+         $("#go_up").show();
 }
 
 
@@ -143,7 +145,7 @@ function scrollDownToSearchBox(){
 		           'scrollTop':$('#search').offset().top
 		         }, 500);
 		    });
-		    $("#go_up").show();
+		    //$("#go_up").show();
 		})(jQuery);
 }
 

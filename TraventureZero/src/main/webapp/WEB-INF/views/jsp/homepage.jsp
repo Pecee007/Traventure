@@ -13,9 +13,9 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<!-- jQuery -->
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<!-- <script src="resources/js/jquery-2.2.2.min.js"></script> -->
 	<script src="resources/js/hoteldetails.js"></script>
 		<!-- add json2html; both the core library and the jquery wrapper -->
@@ -39,7 +39,7 @@
   					<span class="icon-bar"></span>
   					<span class="icon-bar"></span>
   				</button>
-  				<a href="" class="navbar-brand">TRAVENTURE</a>
+  				<a href="home" class="navbar-brand">TRAVENTURE</a>
   			</div>
   			<div class="collapse navbar-collapse" id="navbar-collapse">
   			<a href="signup" class="btn btn-success navbar-btn navbar-right full">Sign up</a>
@@ -49,7 +49,7 @@
   				<ul class="nav navbar-nav">
   					<li><a href="#home" onClick="scrollDownToHome();">HOME</a> </li>
             		<li><a href="#search" onClick="scrollDownToSearchBox();">SEARCH</a> </li>
-  					<li><a href="#aboutus">ABOUT US</a> </li>
+  					<li><a href="aboutus">ABOUT US</a> </li>
   					<li><a href="#faq">FAQ</a> </li>
   				</ul>
   			</div>
@@ -140,7 +140,7 @@
         </td>
       </tr>
       <tr>
-      	<td><h4 id="info"></h4></td>
+      	<td><center><h4 id="info" class="btn-default"></h4></center></td>
       </tr>
 	<tr>
 		<td>
@@ -247,7 +247,7 @@
 </div>
   <div id="footer">
 	<footer align="center">
-		<center><p>Copyright &copy 2016 Traventure</p></center>
+		<center><p>Copyright &copy 2016 &middot; Traventure &middot; <a href="privacy">Privacy</a> &middot; <a href="terms">Terms</a></p></center>
 	</footer>
   </div>
   	

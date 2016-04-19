@@ -45,6 +45,7 @@ public class HomeController {
 		System.out.println(formattedDate);
 		model.addAttribute("serverTime", formattedDate );
 		
+		//return "home";
 		return "jsp/homepage";
 		//return "jsp/signin";
 

@@ -27,9 +27,63 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/signup.css">
 	<!-- javascript -->
 	<script src="resources/js/signup.js"></script>
+		<!-- jQuery -->
+		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+	onerror = handleErr;
+	var txt = "";
+	function handleErr(msg,url,l){
+		txt = "There was an erron on this page.\n\n";
+		txt += "Error: "+msg+"\n";
+		txt += "URL: "+ url + "\n";
+		txt += "Line: " + l + "\n\n";
+		txt += "Click OK to Continue.\n\n";
+		alert(txt);
+		return true;
+	}
+	function validateSignup(status){
+		//alert("Sign up again"+status);
+		if(status == "Fail"){
+			var s = "Fail";
+			document.getElementById("message").innerHTML="Displayname already exists";
+			alert("Sign up again"+status);
+		}
+		return true;
+		}
+    function validate()
+    {
+    	var pwd = document.getElementById("password").value;
+    	var cpwd = document.getElementById("password_confirmation").value;
+    	if(pwd!=null && cpwd!=null)
+    		if(pwd == cpwd){
+	    		document.getElementById("message").innerHTML="";
+	    		//alert("Successfully Signed up!");
+	    		return true;
+    		}
+    		else
+    		{
+    			document.getElementById("message").innerHTML="Passwords do not match";
+    			return false;
+    		}
+    	return false;
+    }
+</script>
 </head>
+<%-- 			<% 
+				String status = null;
+				if(){
+					status = (String) session.getAttribute("status"); 
 
-<body data-spy="scroll" data-target="#my-navbar">
+					if(status.equals("success")){
+						out.println("Feedback Successfully submitted! Thank you for the feedback.");
+					}
+					else if(status.equals("fail")){
+						out.println("Feedback could not be submitted! Please try again.");
+					}
+				}
+			%> --%>
+
+<body data-spy="scroll" data-target="#my-navbar" onLoad="validateSignup(${status})">
 <div id="wrapper">
 <div id="header">
 <!-- navbar -->
@@ -52,7 +106,7 @@
   				<ul class="nav navbar-nav">
   					<li><a href="#home" onClick="scrollDownToHome();">HOME</a> </li>
             		<li><a href="#search" onClick="scrollDownToSearchBox();">SEARCH</a> </li>
-  					<li><a href="#aboutus">ABOUT US</a> </li>
+  					<li><a href="aboutus">ABOUT US</a> </li>
   					<li><a href="#faq">FAQ</a> </li>
   				</ul>
   			</div>
@@ -64,8 +118,9 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form:form role="form" method="post" action="user/signup" modelAttribute="user">
+		<form:form role="form" method="post" action="user/signup" modelAttribute="user" onSubmit="return validate();">
 			<h2>Please Sign Up <small>It's free and always will be.</small></h2>
+			<h3 id = "message" style="color:red;">${status}</h3>
 			<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
@@ -115,6 +170,7 @@
 				<div class="col-xs-12 col-md-6"><a href="signin" class="btn btn-success btn-block btn-lg">Sign In</a></div>
 			</div>
 		</form:form>
+		
 	</div>
 </div>
 <!-- Modal -->
@@ -144,7 +200,7 @@
 </div>
 <div id="footer">
 	<footer align="center">
-		<center><p>Copyright &copy 2016 Traventure</p></center>
+		<center><p>Copyright &copy 2016 &middot; Traventure &middot; <a href="privacy">Privacy</a> &middot; <a href="terms">Terms</a></p></center>
 	</footer>
 </div>
 </div>

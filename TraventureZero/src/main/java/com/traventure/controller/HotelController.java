@@ -21,6 +21,7 @@ import com.google.gson.GsonBuilder;
 import com.traventure.domain.HotelDetail;
 import com.traventure.domain.JsonResponse;
 import com.traventure.domain.User;
+import com.traventure.domain.userAuth;
 import com.traventure.mongoRepository.HotelDetailRepo;
 import com.traventure.mongoRepository.UserSignUpRepo;
 
@@ -120,17 +121,68 @@ public class HotelController {
 		return "jsp/signup";
 	}
 	
-	@RequestMapping(value = "/user/signin", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/signin", method = RequestMethod.POST)
 	public String signinUser(@RequestParam("username")String username, 
 			@RequestParam("password")String password, Model model) {
-		return "jsp/signin";
+		logger.info("");
+		logger.info("You are trying to signin");
+		User usr = userRepo.getDisplayName(username);
+		if(usr == null){
+			logger.info("Username does not exist!");
+			return "redirect:/signin";
+		}
+		else{
+			if(usr.getPassword().equals(password)){
+				model.addAttribute(username,usr.getDisplayName());
+				userAuth ua = new userAuth();
+				ua.setStatus("SUCCESS");
+				ua.setResult(usr.getDisplayName());
+				logger.info("Successfully signed in!");
+			}
+			else{
+				model.addAttribute("status", "Fail");
+				logger.info("Username and  password does not match!!");
+				return "redirect:/signin";
+			}
+		}
+		return "redirect:/home";
 	}
 	
 	@RequestMapping(value = "/user/signup", method = RequestMethod.POST)
-	public String signupUser(@ModelAttribute User user) {
+	public String signupUser(@ModelAttribute User user, Model model, BindingResult result) {
+	    if (result.hasErrors()) {
+	        return "auth/signin";
+	      }
 		if(user != null){
-			userRepo.save(user);
+			User dn = userRepo.getDisplayName(user.getDisplayName());
+			if(dn == null){
+				userRepo.save(user);
+				logger.info("Congrats, you Successfully signed up!");
+				return "redirect:/signin";
+			}
+			else{
+				model.addAttribute("status", "Fail");
+				logger.info("Display name :"+dn.getDisplayName());
+				logger.info("User Already Exist!!");
+				//return "jsp/signup";
+			}
 		}
-		return "jsp/signin";
+		return "redirect:/signup";
 	}
+	
+	@RequestMapping(value="/aboutus", method = RequestMethod.GET)
+	public String aboutUs(Model model){
+		return "jsp/AboutUs";
+	}
+
+	@RequestMapping(value="/privacy", method = RequestMethod.GET)
+	public String privacy(Model model){
+		return "redirect:/home";
+	}
+	
+	@RequestMapping(value="/terms", method = RequestMethod.GET)
+	public String terms(Model model){
+		return "redirect:/home";
+	}
+	
 }

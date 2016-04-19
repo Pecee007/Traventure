@@ -13,9 +13,9 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<!-- jQuery -->
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<!-- <script src="resources/js/jquery-2.2.2.min.js"></script> -->
 	<script src="resources/js/hoteldetails.js"></script>
 		<!-- add json2html; both the core library and the jquery wrapper -->
@@ -23,12 +23,12 @@
 	<script type="text/javascript" src="resources/js/jquery.json2html.js"></script>
 	<!-- Common Style CSS -->
 	<link rel="stylesheet" type="text/css" href="resources/css/commonStyle.css">
-	<link rel="stylesheet" type="text/css" href="resources/css/signin.css">
 </head>
 
 <body data-spy="scroll" data-target="#my-navbar">
 <div id="wrapper">
 <div id="header">
+
 <!-- navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
   		<div class="container-fluid" style="background-image: url('resources/img/img3.jpg');">
@@ -55,21 +55,19 @@
   			</div>
   		</div>
   	</nav>
-</div>
+  </div>	
+  	<!--Content to link-->
+  <div  class="page-header" id="aboutus">
+  </div>
 <div id="content">
-	<form action="user/signin" method="post" name="Login_Form" class="form-signin">       
-		<h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
-		<hr class="colorgraph"><br>
-		<input type="text" class="form-control" name="username" id="username" placeholder="Username" required="" autofocus="" />
-		<input type="password" class="form-control" name="password" id="password" placeholder="Password" required=""/>     		  
-		<button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>  			
-	</form>	
+<p>Hello This page is About Us!</p>
 </div>
-<div id="footer">
+  <div id="footer">
 	<footer align="center">
 		<center><p>Copyright &copy 2016 &middot; Traventure &middot; <a href="privacy">Privacy</a> &middot; <a href="terms">Terms</a></p></center>
 	</footer>
-</div>
+  </div>
+  	
 </div>
 </body>
 </html>

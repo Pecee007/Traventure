@@ -3,9 +3,10 @@ package com.traventure.domain;
 import org.springframework.data.annotation.Id;
 
 public class User {
-	@Id
+	
 	private String firstName;
 	private String lastName;
+	@Id
 	private String displayName;
 	private String email;
 	private String password;
