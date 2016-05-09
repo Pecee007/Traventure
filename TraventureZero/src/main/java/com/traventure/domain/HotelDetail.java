@@ -9,15 +9,17 @@ public class HotelDetail {
 	 private String hotel_name;  
 	 private String hotel_description;
 	 private String hotel_location;
+	 private double hotel_rating;
 	 
 	public HotelDetail(){}
 	 
 	
-	 public HotelDetail(String hotel_name, String hotel_description, String hotel_location) {
+	 public HotelDetail(String hotel_name, String hotel_description, String hotel_location, double hotel_rating) {
 		//super();
 		this.hotel_name = hotel_name;
 		this.hotel_description = hotel_description;
 		this.hotel_location = hotel_location;
+		this.hotel_rating = hotel_rating;
 	}
 	 
 	public String getid() {
@@ -47,6 +49,15 @@ public class HotelDetail {
 		this.hotel_location = hotel_location;
 	}
 	
+	
+	public double getHotel_rating() {
+		return hotel_rating;
+	}
+
+	public void setHotel_rating(double hotel_rating) {
+		this.hotel_rating = hotel_rating;
+	}
+
 	@Override
 	public String toString() {
 		return "HotelDetails [id=" + id + ", hotel_name=" + hotel_name + ", hotel_description=" + hotel_description + ", hotel_location=" + hotel_location + "]";

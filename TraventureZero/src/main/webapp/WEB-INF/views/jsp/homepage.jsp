@@ -9,20 +9,32 @@
 	<meta name="description" content="Traventure">
 	<!-- Latest compiled and minified CSS -->
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
+	<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
 	<!-- jQuery -->
-	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+	<script src="resources/js/jquery-2.1.1.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+	<script src="resources/js/bootstrap.min.js"></script>
 	<!-- <script src="resources/js/jquery-2.2.2.min.js"></script> -->
 	<script src="resources/js/hoteldetails.js"></script>
-		<!-- add json2html; both the core library and the jquery wrapper -->
+	<!-- add json2html; both the core library and the jquery wrapper -->
 	<script type="text/javascript" src="resources/js/json2html.js"></script>
 	<script type="text/javascript" src="resources/js/jquery.json2html.js"></script>
 	<!-- Common Style CSS -->
 	<link rel="stylesheet" type="text/css" href="resources/css/commonStyle.css">
+	<!-- Hotel Style CSS -->
+	<link rel="stylesheet" type="text/css" href="resources/css/hotel.css">
+	<!-- Latest compiled and minified JavaScript for rateYO -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.1.1/jquery.rateyo.min.js"></script>  -->
+	<script src="resources/js/jquery.rateyo.min.js"></script> 
+	<!-- Latest compiled and minified CSS for rateYO -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.1.1/jquery.rateyo.min.css">  -->
+	<link rel="stylesheet" href="resources/css/jquery.rateyo.min.css"> 
 </head>
 
 <body data-spy="scroll" data-target="#my-navbar">
@@ -150,6 +162,12 @@
 		</td>
 	</tr>      
 
+
+
+
+
+
+
 <!-- Dynamic rows generarion -->
 <%-- 		<c:forEach var="hotel" items="${hotels}">
 			<tr>
@@ -211,6 +229,7 @@
 		                  <div class="row-md-2"> Name of the hotel:<b> ${hotel.hotel_name} </b>
 		                  </div>
 		                  <div class="row-md-4"> Location details: <b>${hotel.hotel_location}</b></div>
+		                  <div class="row-md-4"> Location details: <b>${hotel.hotel_rating}</b></div>
 		                  <div class="row-md-2">
 		                     <div class="panel-group" id="description${hotel.id}" role="tablist" aria-multiselectable="true">
 		                       <div class="panel panel-default">
@@ -239,7 +258,7 @@
 		        </td>
 		      </tr>
 		</c:forEach>
-		--%>
+		 --%>
     </tbody>
   </table>  
   
