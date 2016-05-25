@@ -62,7 +62,7 @@
   					<li><a href="#home" onClick="scrollDownToHome();">HOME</a> </li>
             		<li><a href="#search" onClick="scrollDownToSearchBox();">SEARCH</a> </li>
   					<li><a href="aboutus">ABOUT US</a> </li>
-  					<li><a href="#faq">FAQ</a> </li>
+  					<li><a href="FAQs">FAQ's</a> </li>
   				</ul>
   			</div>
   		</div>

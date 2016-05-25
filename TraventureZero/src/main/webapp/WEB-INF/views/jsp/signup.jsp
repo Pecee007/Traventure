@@ -104,10 +104,10 @@
           	<a href="" class="btn btn-info navbar-btn navbar-right full">LIKE TRAVENTURE!</a>
           
   				<ul class="nav navbar-nav">
-  					<li><a href="#home" onClick="scrollDownToHome();">HOME</a> </li>
+  					<li><a href="home" onClick="scrollDownToHome();">HOME</a> </li>
             		<li><a href="#search" onClick="scrollDownToSearchBox();">SEARCH</a> </li>
   					<li><a href="aboutus">ABOUT US</a> </li>
-  					<li><a href="#faq">FAQ</a> </li>
+  					<li><a href="FAQs">FAQ's</a> </li>
   				</ul>
   			</div>
   		</div>
@@ -153,12 +153,12 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-4 col-sm-3 col-md-3">
+<!-- 				<div class="col-xs-4 col-sm-3 col-md-3">
 					<span class="button-checkbox">
 						<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
                         <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
 					</span>
-				</div>
+				</div> -->
 				<div class="col-xs-8 col-sm-9 col-md-9">
 					 By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
 				</div>
@@ -182,14 +182,28 @@
 				<h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
 			</div>
 			<div class="modal-body">
+			<p style="font-family:Arial;font-size:15px; color:#CC6600">USE OF THE WEBSITE</p>
+			<p>As a condition of your use of this Website, you warrant that</p>
+				<ol><li>you are at least 18 years of age and are of sound mind,</li>
+	                <li>you possess the legal authority to create a binding legal obligation,</li>
+	                <li>you will use this Website in accordance with the Terms of Use,</li>
+	                <li>you will only use this Website to make legitimate reservations for you or for another person for whom you are legally authorized to act,</li>
+	                <li>you will inform such other persons about the Terms of Use that apply to the reservations you have made on their behalf, including all rules and restrictions applicable thereto,</li>
+	                <li>all information supplied by you on this Website is true, accurate, current and complete, and</li>
+	                <li>if you have an online account with this Website, you will safeguard your account information and will supervise and be completely responsible for any use of your account by you and anyone other than you.</li>
+	              </ol>
+<!-- 				<p>As a condition of your use of this Website, you warrant that: </p>
+				<p>you are at least 18 years of age and are of sound mind,</p>
+				<p></p>
+				<p></p>
+				<p></p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-			</div>
+			 --></div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
 			</div>

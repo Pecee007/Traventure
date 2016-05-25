@@ -12,10 +12,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<!-- jQuery -->
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<!-- <script src="resources/js/jquery-2.2.2.min.js"></script> -->
 	<script src="resources/js/hoteldetails.js"></script>
 		<!-- add json2html; both the core library and the jquery wrapper -->
@@ -50,7 +51,7 @@
   					<li><a href="#home" onClick="scrollDownToHome();">HOME</a> </li>
             		<li><a href="#search" onClick="scrollDownToSearchBox();">SEARCH</a> </li>
   					<li><a href="aboutus">ABOUT US</a> </li>
-  					<li><a href="#faq">FAQ</a> </li>
+  					<li><a href="FAQs">FAQ's</a> </li>
   				</ul>
   			</div>
   		</div>

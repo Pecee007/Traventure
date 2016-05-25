@@ -114,7 +114,8 @@ function doAjaxPost() {
 	                                                          {"tag":"div","class":"panel panel-default","children":[
 	                                                              {"tag":"div","class":"panel-heading","role":"tab","id":"desc${id}","children":[
 	                                                                  {"tag":"h4","class":"panel-title","children":[
-	                                                                      {"tag":"a","data-toggle":"collapse","data-present":"#description${id}","href":"#info${id}","aria-expanded":"true","aria-controls":"info${id}","html":"More details / Description"}
+	                                                                      {"tag":"span","class":"glyphicon glyphicon-align-left","aria-hidden":"true","html":""},
+	                                                                      {"tag":"a","data-toggle":"collapse","data-present":"#description${id}","href":"#info${id}","aria-expanded":"true","aria-controls":"info${id}","html":" More details / Description"}
 	                                                                    ]}
 	                                                                ]},
 	                                                              {"tag":"div","id":"info${id}","class":"panel-collapse collapse","role":"tabpanel","aria-labelledby":"desc${id}","children":[

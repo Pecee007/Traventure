@@ -37,6 +37,7 @@ public class HotelController {
 	 Gson gson = new GsonBuilder().create();
 	
 	List<HotelDetail> hotels = new ArrayList<HotelDetail>();
+	List<HotelDetail> hotels1 = new ArrayList<HotelDetail>();
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST, produces="application/json")
@@ -97,6 +98,12 @@ public class HotelController {
 			hotels = (List<HotelDetail>) hotelrepo.findAll();
 		else{
 			hotels = (List<HotelDetail>) hotelrepo.searchByHotelLocation(location);
+			
+			for(HotelDetail hotel : hotels){
+				System.out.println("Hotel name: "+hotel.getHotel_name());
+			}
+			//System.out.println("Hotels in location: " + hotels);
+			
 		}
 		System.out.println("Object List"+hotels);
 		String a = gson.toJson(hotels);
@@ -181,6 +188,11 @@ public class HotelController {
 	@RequestMapping(value="/aboutus", method = RequestMethod.GET)
 	public String aboutUs(Model model){
 		return "jsp/AboutUs";
+	}
+	
+	@RequestMapping(value="/FAQs", method = RequestMethod.GET)
+	public String faq(Model model){
+		return "jsp/FAQs";
 	}
 
 	@RequestMapping(value="/privacy", method = RequestMethod.GET)
