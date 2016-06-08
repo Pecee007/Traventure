@@ -4,44 +4,56 @@ import org.springframework.data.annotation.Id;
 
 public class User {
 	
-	private String firstName;
-	private String lastName;
+	private String userName;
 	@Id
 	private String displayName;
+	private String gender;
+	private String age;
 	private String email;
 	private String password;
+	private String location;
 	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public User(String firstName, String lastName, String displayName, String email, String password) {
+	public User(String userName, String displayName, String gender, String age, String email, String password,
+			String location) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.userName = userName;
 		this.displayName = displayName;
+		this.gender = gender;
+		this.age = age;
 		this.email = email;
 		this.password = password;
+		this.location = location;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getUserName() {
+		return userName;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getDisplayName() {
 		return displayName;
 	}
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
 	}
 	public String getEmail() {
 		return email;
@@ -55,5 +67,14 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
 	
 }

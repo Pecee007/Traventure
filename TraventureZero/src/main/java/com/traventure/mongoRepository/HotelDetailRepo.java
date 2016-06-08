@@ -11,6 +11,6 @@ public interface HotelDetailRepo extends CrudRepository<HotelDetail, Long> {
 	@Query("{'hotel_name' : ?0}")
 	public Iterable<HotelDetail> searchByHotelName(String hotelName);
 	
-	@Query("{'hotel_location' : ?0}")
+	@Query(value = "{'hotel_location' : {$regex : ?0 }}")	
 	public Iterable<HotelDetail> searchByHotelLocation(String hotelLocation);
 }

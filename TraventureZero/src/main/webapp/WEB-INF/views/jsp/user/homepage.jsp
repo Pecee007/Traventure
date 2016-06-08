@@ -6,9 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Traventure-Stay Anywhere!</title>
-<c:set var="root" value="${pageContext.request.contextPath}" />
 	<meta name="description" content="Traventure">
-	<!-- Latest compiled and minified CSS -->
+	<c:set var="root" value="${pageContext.request.contextPath}" />
 	<!-- Latest compiled and minified CSS -->
 	<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="${root}/resources/css/bootstrap.min.css">
@@ -21,7 +20,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 	<script src="${root}/resources/js/bootstrap.min.js"></script>
-	<!-- <script src="${root}/resources/js/jquery-2.2.2.min.js"></script> -->
+	<!-- <script src="resources/js/jquery-2.2.2.min.js"></script> -->
 	<script src="${root}/resources/js/hoteldetails.js"></script>
 	<!-- add json2html; both the core library and the jquery wrapper -->
 	<script type="text/javascript" src="${root}/resources/js/json2html.js"></script>
@@ -39,6 +38,7 @@
 </head>
 
 <body data-spy="scroll" data-target="#my-navbar">
+
 <div id="wrapper">
 <div id="header">
 
@@ -55,13 +55,13 @@
   				<a href="home.htm" class="navbar-brand">TRAVENTURE</a>
   			</div>
   			<div class="collapse navbar-collapse" id="navbar-collapse">
-  			<a href="signup.htm" class="btn btn-success navbar-btn navbar-right full">Sign up</a>
-  			<a href="signin.htm" class="btn btn-default navbar-btn navbar-right full">Sign in</a>
-          	<a href="" class="btn btn-info navbar-btn navbar-right full">LIKE TRAVENTURE!</a>
+  				<a href="logout.htm" class="btn btn-default navbar-btn navbar-right full">Log Out</a>
+  				<a href="#" class="btn btn-success navbar-btn navbar-right full">Welcome, ${currentUser.getResult()}!</a>
+          		<a href="#" class="btn btn-info navbar-btn navbar-right full">LIKE TRAVENTURE!</a>
           
   				<ul class="nav navbar-nav">
   					<li><a href="#home" onClick="scrollDownToHome();">HOME</a> </li>
-            		<li><a href="#search" onClick="scrollDownToSearchBox();">SEARCH</a> </li>
+            		<li><a href="#search.htm" onClick="scrollDownToSearchBox();">SEARCH</a> </li>
   					<li><a href="aboutus.htm">ABOUT US</a> </li>
   					<li><a href="FAQs.htm">FAQ's</a> </li>
   				</ul>
@@ -80,7 +80,7 @@
   			<p>Stay Anywhere</p>
   			<div class="btn-group">
   				<a href="#search" class="btn btn-lg btn-primary" onClick="scrollDownToSearchBox();">Find Hotels Now!</a>
-  				<a href="" class="btn btn-lg btn-default">Offers/Discounts</a>
+  				<a href="#" class="btn btn-lg btn-default">Offers/Discounts</a>
   				<a href="#home" class="btn btn-lg btn-danger" onClick="scrollDownToHome();">Traventure Reloaded!!</a>
   			</div>
   		</div><!-- End container -->
@@ -186,28 +186,28 @@
 		                    </ol>
 		                    <div class="carousel-inner">
 		                      <div class="item active">
-		                        <img src="${root}/resources/img/luxury.png" alt="Text of the image">
+		                        <img src="resources/img/luxury.png" alt="Text of the image">
 		                        <div class="carousel-caption">
 		                          <h3>Luxury Stay</h3>
 		                          <p>Experience your Dream</p>
 		                        </div>
 		                      </div>
 		                      <div class="item">
-		                        <img src="${root}/resources/img/river.png" alt="Text of the image">
+		                        <img src="resources/img/river.png" alt="Text of the image">
 		                        <div class="carousel-caption">
 		                          <h3>River Side Holiday</h3>
 		                          <p>Natures blessing</p>
 		                        </div>
 		                      </div>
 		                      <div class="item">
-		                        <img src="${root}/resources/img/fun.jpg" alt="Text of the image">
+		                        <img src="resources/img/fun.jpg" alt="Text of the image">
 		                        <div class="carousel-caption">
 		                          <h3>Have some Fun!!</h3>
 		                          <p>Start Off HERE...</p>
 		                        </div>
 		                      </div>
 		                      <div class="item">
-		                        <img src="${root}/resources/img/eco.jpg" alt="Text of the image">
+		                        <img src="resources/img/eco.jpg" alt="Text of the image">
 		                        <div class="carousel-caption">
 		                          <h3>IN LOVE with ECO-WORLD?</h3>
 		                          <p>Nothing better than this..#</p>
@@ -272,5 +272,11 @@
   </div>
   	
 </div>
+<script>
+	var userLoc = '${userLocation}';
+	document.getElementById("placename").value = userLoc;
+	doAjaxPost();
+</script>
+
 </body>
 </html>

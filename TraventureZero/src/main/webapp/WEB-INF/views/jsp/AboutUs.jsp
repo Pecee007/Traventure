@@ -12,10 +12,10 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<!-- jQuery -->
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<!-- <script src="resources/js/jquery-2.2.2.min.js"></script> -->
 	<script src="resources/js/hoteldetails.js"></script>
 		<!-- add json2html; both the core library and the jquery wrapper -->
@@ -39,16 +39,16 @@
   					<span class="icon-bar"></span>
   					<span class="icon-bar"></span>
   				</button>
-  				<a href="home" class="navbar-brand">TRAVENTURE</a>
+  				<a href="home.htm" class="navbar-brand">TRAVENTURE</a>
   			</div>
   			<div class="collapse navbar-collapse" id="navbar-collapse">
-  			<a href="signup" class="btn btn-success navbar-btn navbar-right full">Sign up</a>
-  			<a href="signin" class="btn btn-default navbar-btn navbar-right full">Sign in</a>
-          	<a href="" class="btn btn-info navbar-btn navbar-right full">LIKE TRAVENTURE!</a>
+  			<a href="signup.htm" class="btn btn-success navbar-btn navbar-right full">Sign up</a>
+  			<a href="signin.htm" class="btn btn-default navbar-btn navbar-right full">Sign in</a>
+          	<a href="#" class="btn btn-info navbar-btn navbar-right full">LIKE TRAVENTURE!</a>
           
   				<ul class="nav navbar-nav">
-  					<li><a href="aboutus">ABOUT US</a> </li>
-  					<li><a href="#faq">FAQ</a> </li>
+  					<li><a href="aboutus.htm">ABOUT US</a> </li>
+  					<li><a href="FAQs.htm">FAQ's</a> </li>
   				</ul>
   			</div>
   		</div>
@@ -62,7 +62,7 @@
 </div>
   <div id="footer">
 	<footer align="center">
-		<center><p>Copyright &copy 2016 &middot; Traventure &middot; <a href="privacy">Privacy</a> &middot; <a href="terms">Terms</a></p></center>
+		<center><p>Copyright &copy 2016 &middot; Traventure &middot; <a href="privacy.htm">Privacy</a> &middot; <a href="terms.htm">Terms</a></p></center>
 	</footer>
   </div>
   	

@@ -6,23 +6,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Traventure-Stay Anywhere!</title>
-	<meta name="description" content="Traventure">
-	<!-- Latest compiled and minified CSS -->
+	<meta name="aboutus" content="Traventure">
+	<c:set var="root" value="${pageContext.request.contextPath}" />
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<!-- jQuery -->
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<!-- <script src="resources/js/jquery-2.2.2.min.js"></script> -->
-	<script src="resources/js/hoteldetails.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<!-- <script src="${root}${root}/resources/js/jquery-2.2.2.min.js"></script> -->
+	<script src="${root}/resources/js/hoteldetails.js"></script>
 		<!-- add json2html; both the core library and the jquery wrapper -->
-	<script type="text/javascript" src="resources/js/json2html.js"></script>
-	<script type="text/javascript" src="resources/js/jquery.json2html.js"></script>
+	<script type="text/javascript" src="${root}/resources/js/json2html.js"></script>
+	<script type="text/javascript" src="${root}/resources/js/jquery.json2html.js"></script>
 	<!-- Common Style CSS -->
-	<link rel="stylesheet" type="text/css" href="resources/css/commonStyle.css">
+	<link rel="stylesheet" type="text/css" href="${root}/resources/css/commonStyle.css">
 </head>
 
 <body data-spy="scroll" data-target="#my-navbar">
@@ -31,7 +31,7 @@
 
 <!-- navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
-  		<div class="container-fluid" style="background-image: url('resources/img/img3.jpg');">
+  		<div class="container-fluid" style="background-image: url('${root}/resources/img/img3.jpg');">
   			<div class="navbar-header">
   				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
   					<span class="icon-bar"></span>
@@ -39,24 +39,22 @@
   					<span class="icon-bar"></span>
   					<span class="icon-bar"></span>
   				</button>
-  				<a href="home.htm" class="navbar-brand">TRAVENTURE</a>
+  				<a href="user/home.htm" class="navbar-brand">TRAVENTURE</a>
   			</div>
   			<div class="collapse navbar-collapse" id="navbar-collapse">
-  			<a href="signup.htm" class="btn btn-success navbar-btn navbar-right full">Sign up</a>
-  			<a href="signin.htm" class="btn btn-default navbar-btn navbar-right full">Sign in</a>
-          	<a href="#" class="btn btn-info navbar-btn navbar-right full">LIKE TRAVENTURE!</a>
+          <a href="logout.htm" class="btn btn-default navbar-btn navbar-right full">Log Out</a>
+          <a href="" class="btn btn-success navbar-btn navbar-right full">Welcome, ${currentUser.getResult()}</a>
+          <a href="" class="btn btn-info navbar-btn navbar-right full">LIKE TRAVENTURE!</a>
           
   				<ul class="nav navbar-nav">
-  					<li><a href="#home" onClick="scrollDownToHome();">HOME</a> </li>
-            		<li><a href="#search" onClick="scrollDownToSearchBox();">SEARCH</a> </li>
-  					<li><a href="aboutus.htm">ABOUT US</a> </li>
-  					<li><a href="FAQs.htm">FAQ's</a> </li>
+  					<li><a href="user/aboutus.htm">ABOUT US</a> </li>
+  					<li><a href="user/FAQs.htm">FAQ's</a> </li>
   				</ul>
   			</div>
   		</div>
   	</nav>
   </div>	
-  	<!--Content to link-->
+  	<!--About Us-->
   <div  class="page-header" id="aboutus">
   </div>
 <div id="content">
@@ -64,7 +62,7 @@
 </div>
   <div id="footer">
 	<footer align="center">
-		<center><p>Copyright &copy 2016 &middot; Traventure &middot; <a href="privacy.htm">Privacy</a> &middot; <a href="terms.htm">Terms</a></p></center>
+		<center><p>Copyright &copy 2016 &middot; Traventure &middot; <a href="user/privacy.htm">Privacy</a> &middot; <a href="user/terms.htm">Terms</a></p></center>
 	</footer>
   </div>
   	

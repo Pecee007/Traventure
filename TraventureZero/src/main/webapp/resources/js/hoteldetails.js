@@ -14,15 +14,15 @@ function doAjaxPost() {
     var username = $('#username').val();
     
     $.ajax({
-        type: "POST",
-        url: "search",
+        type: "GET",
+        url: "search.htm",
         data : "placename=" + placename + "&username=" + username,
         success: function(response){
         	console.log(response);  
             // we have the response
             if(response.status == "SUCCESS"){
             	console.log("Response Objects\n"+response.result);
-                displayHotelDetails(response.result);
+                displayHotelDetails(response.result,response.length);
                 console.log("Hotels has been added to the list successfully. ");
                 scrollDownToSearchBox();
              }
@@ -41,10 +41,11 @@ function doAjaxPost() {
 }
 
 	//Function to display the response object
-	function displayHotelDetails(response){
+	function displayHotelDetails(response,length){
 		
 		//set the field to empty
 	    $('#hoteldetails > #hotellist ').html("");
+	    	$('#info').html("Found " + length + " Hotels for you!");
 	    //Transform all the hotel details returned by response object to html by using json2html template
 	    var transformHotels =   {"tag":"tr","children":[
 	                              {"tag":"td","children":[
@@ -61,28 +62,28 @@ function doAjaxPost() {
 	                                                        ]},
 	                                                      {"tag":"div","class":"carousel-inner","children":[
 	                                                          {"tag":"div","class":"item active","children":[
-	                                                              {"tag":"img","src":"resources/img/luxury.png","alt":"Text of the image","html":""},
+	                                                              {"tag":"img","src":"/hotel/resources/img/luxury.png","alt":"Text of the image","html":""},
 	                                                              {"tag":"div","class":"carousel-caption","children":[
 	                                                                  {"tag":"h3","html":"Luxury Stay"},
 	                                                                  {"tag":"p","html":"Experience your Dream"}
 	                                                                ]}
 	                                                            ]},
 	                                                          {"tag":"div","class":"item","children":[
-	                                                              {"tag":"img","src":"resources/img/river.png","alt":"Text of the image","html":""},
+	                                                              {"tag":"img","src":"/hotel/resources/img/river.png","alt":"Text of the image","html":""},
 	                                                              {"tag":"div","class":"carousel-caption","children":[
 	                                                                  {"tag":"h3","html":"River Side Holiday"},
 	                                                                  {"tag":"p","html":"Natures blessing"}
 	                                                                ]}
 	                                                            ]},
 	                                                          {"tag":"div","class":"item","children":[
-	                                                              {"tag":"img","src":"resources/img/fun.jpg","alt":"Text of the image","html":""},
+	                                                              {"tag":"img","src":"/hotel/resources/img/fun.jpg","alt":"Text of the image","html":""},
 	                                                              {"tag":"div","class":"carousel-caption","children":[
 	                                                                  {"tag":"h3","html":"Have some Fun!!"},
 	                                                                  {"tag":"p","html":"Start Off HERE..."}
 	                                                                ]}
 	                                                            ]},
 	                                                          {"tag":"div","class":"item","children":[
-	                                                              {"tag":"img","src":"resources/img/eco.jpg","alt":"Text of the image","html":""},
+	                                                              {"tag":"img","src":"/hotel/resources/img/eco.jpg","alt":"Text of the image","html":""},
 	                                                              {"tag":"div","class":"carousel-caption","children":[
 	                                                                  {"tag":"h3","html":"IN LOVE with ECO-WORLD?"},
 	                                                                  {"tag":"p","html":"Nothing better than this..#"}
@@ -101,7 +102,8 @@ function doAjaxPost() {
 	                                          {"tag":"div","class":"col-xs-12 col-md-8","children":[
 	                                              {"tag":"div","class":"col-xs-12 col-md-10","children":[
 	                                                  {"tag":"div","class":"row-md-2","children":[
-	                                                      {"tag":"b","html":" ${hotel_name} "}
+	                                                      /*{"tag":"b","html":" ${hotel_name} "}*/
+	                                                       {"tag":"a","href":"hotelDesc.htm","style":"text-decoration:none; font-weight: bold; font-size: 18;","html":"${hotel_name}"}
 	                                                    ]},
 	                                                  {"tag":"div","class":"row-md-4","children":[
 	                                                      {"tag":"b","html":"${hotel_location}"}
@@ -114,7 +116,8 @@ function doAjaxPost() {
 	                                                          {"tag":"div","class":"panel panel-default","children":[
 	                                                              {"tag":"div","class":"panel-heading","role":"tab","id":"desc${id}","children":[
 	                                                                  {"tag":"h4","class":"panel-title","children":[
-	                                                                      {"tag":"a","data-toggle":"collapse","data-present":"#description${id}","href":"#info${id}","aria-expanded":"true","aria-controls":"info${id}","html":"More details / Description"}
+	                                                                      {"tag":"span","class":"glyphicon glyphicon-align-left","aria-hidden":"true","html":""},
+	                                                                      {"tag":"a","data-toggle":"collapse","data-present":"#description${id}","href":"#info${id}","aria-expanded":"true","aria-controls":"info${id}","html":" More details / Description"}
 	                                                                    ]}
 	                                                                ]},
 	                                                              {"tag":"div","id":"info${id}","class":"panel-collapse collapse","role":"tabpanel","aria-labelledby":"desc${id}","children":[
@@ -135,8 +138,8 @@ function doAjaxPost() {
 	                                ]}
 	                            ]}
 	
-	   		 $('#hoteldetails > #hotellist ').json2html(response, transformHotels);    
-	         $('#info').html("Found " + response.length + " Hotels for you!");
+	   		 $('#hoteldetails > #hotellist ').json2html(response, transformHotels);
+             console.log("You are here");
 	         $("#go_up").show();
 	         
 	         //Ratings to be displayed
